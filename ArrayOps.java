@@ -1,25 +1,24 @@
 public class ArrayOps {
     public static void main(String[] args) {
+        System.out.println(findMissingInt (new int [] {3, 0, 1}));
     }
     
     public static int findMissingInt (int [] array) {
         int n = array.length;
-        boolean missing = false ;
-        for (int i=0 ; i <n ; i++)
-        {
+        boolean missing = true;
+        for (int i=0 ; i <=n ; i++) {
             for (int j = 0; j < n ; j++){
                 if (i == array[j]){
-                    missing = true ; 
+                    missing = false ; 
                 }
             }
-            if (missing== false){
+            if (missing == true){
             return i;
           }
-        }   
-        System.out.println("There are no missing integers");
-        return -1;
+          missing = true;
+        }
+        return -1 ;
     }
-
     public static int secondMaxValue(int [] array) {
         int max = array[0] ;
         int secondM = 0 ;
