@@ -1,6 +1,6 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        System.out.println(findMissingInt (new int [] {3, 0, 1}));
+        System.out.println(containsTheSameElements(new int [] {3, -4, 1, 2, 5},new int [] {1, 3, -4, 5}));
     }
     
     public static int findMissingInt (int [] array) {
@@ -9,7 +9,7 @@ public class ArrayOps {
         for (int i=0 ; i <=n ; i++) {
             for (int j = 0; j < n ; j++){
                 if (i == array[j]){
-                    missing = false ; 
+                    missing = false ;
                 }
             }
             if (missing == true){
@@ -47,6 +47,7 @@ public class ArrayOps {
             }
             if ( exist == false )
             return false ;
+        exist = false ;
         }
         return true ;
     }
