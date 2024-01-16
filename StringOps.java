@@ -21,22 +21,111 @@ public class StringOps {
     //////        in Recitation 3 question 5             ///////
     //////                                               ///////
     ////////////////////////////////////////////////////////////
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
-        
+        System.out.println(camelCase("    Intro to coMPUter   sCIEncE ")); 
     }
-
+    /**
+     * @param string
+     * @return
+     */
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
-    }
+        char [] arr = {'a', 'i', 'o', 'e', 'u', 'A' , 'I', 'O', 'E', 'U'} ;
+        boolean isVow ;
+            String newS = "" ;
+            for (int i = 0 ; i < string.length() ; i++) {
+                isVow = false ; 
+                char c = string.charAt(i);
+                if (c == 32){
+                    newS += c;
+                }
+                else {
+                   for (int j = 0 ; j < arr.length ; j++) {
+                        if (c == arr[j]){
+                            isVow =  true ;
+                        }
+                    }
+                     if (isVow == false) {
+                        if (c >= 65 && c<= 90){
+                        newS += (char)(c+32);
+                        }
+                        else {
+                            newS+= c;
+                        }
+                    }
+                    else {
+                        if (isVow == true){
+                            if (c >= 97 && c<= 122){
+                                newS += (char)(c-32);
+                            }
+                            else {
+                                newS += c;
+                            }
+                        }
+                    }
+                    }
+                }
+        return newS;
+            }
 
     public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+        String newS = "" ;
+        int index = 0 ;
+        char c = string.charAt(index);
+        while ( c == 32 ) {
+            index ++ ;
+            c =  string.charAt(index);
+        }
+        if (c >= 65 && c<= 90){
+            newS += (char)(c+32);
+        }
+        else {
+            newS += c;
+        }
+        for (int i = index + 1; i < string.length() ; i++ ) {
+            c = string.charAt(i);
+            if (c == 32){
+                continue;
+            }
+            if (string.charAt(i - 1) == 32) {
+                if (c >= 97 && c <= 122) {
+                    newS += (char)(c-32);
+                }
+                else {
+                    newS += c;
+                }
+            }
+            else {
+                if (c >= 65 && c<= 90){
+                    newS += (char)(c+32);
+                }
+                else {
+                    newS += c; 
+                }
+            }
+        }
+        return newS;
     }
 
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        int count = 0 ;
+        for (int i = 0 ; i < string.length() ; i++ ){
+            if (string.charAt(i) == chr){
+                count++ ; 
+            }
+        }
+        int [] arr = new int [count] ;
+        int index = 0;
+        for (int i = 0 ; i < string.length() ; i++) {
+            if (string.charAt(i) == chr){
+                arr[index] = i ; 
+                index++;
+            }
+        }
+        return arr ;
     }
+
+
 }
