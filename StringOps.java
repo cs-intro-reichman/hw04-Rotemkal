@@ -32,7 +32,7 @@ public class StringOps {
      * @return
      */
     public static String capVowelsLowRest (String string) {
-        char [] arr = {'a', 'i', 'o', 'e', 'u', 'A' , 'I', 'O', 'E', 'U'} ;
+        String vowels = "aioeuAIOEU";
         boolean isVow ;
             String newS = "" ;
             for (int i = 0 ; i < string.length() ; i++) {
@@ -42,12 +42,10 @@ public class StringOps {
                     newS += c;
                 }
                 else {
-                   for (int j = 0 ; j < arr.length ; j++) {
-                        if (c == arr[j]){
-                            isVow =  true ;
-                        }
-                    }
-                     if (isVow == false) {
+                    // #feedback: could be done more simple with string
+                   isVow = voewls.indexOf(c) != -1;
+                    // #feedback: it's better to use boolean with their values instead of comparing them.
+                     if (!isVow) {
                         if (c >= 65 && c<= 90){
                         newS += (char)(c+32);
                         }
@@ -56,7 +54,7 @@ public class StringOps {
                         }
                     }
                     else {
-                        if (isVow == true){
+                        // #feedback: isVow will always be true here, since the else relate to the opposite check (when it false)
                             if (c >= 97 && c<= 122){
                                 newS += (char)(c-32);
                             }
@@ -64,7 +62,6 @@ public class StringOps {
                                 newS += c;
                             }
                         }
-                    }
                     }
                 }
         return newS;
