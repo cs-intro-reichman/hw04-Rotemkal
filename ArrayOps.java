@@ -6,18 +6,30 @@ public class ArrayOps {
     public static int findMissingInt (int [] array) {
         int n = array.length;
         boolean missing = true;
-        for (int i=0 ; i <=n ; i++) {
+        /*
+            #feedback:
+            Basically in your implemantation the retun -1 will be never achived but it required cause the semantic of functions in jave.
+            Let's change the implemantation little bit so it won't confuse the reader that -1 is posible result.
+        */
+        // #feedback: first we define the default value to be returned when there is no missing item to be n;
+        int missingNumber = n;
+        // #feedback: then we don't have to iterate till n.
+        for (int i=0 ; i <n ; i++) {
             for (int j = 0; j < n ; j++){
                 if (i == array[j]){
-                    missing = false ;
+                    missing = false;
                 }
             }
-            if (missing == true){
-            return i;
-          }
+            // #feedback: use boolean in condition as they are without compering their values.
+            if (missing) {
+                // #feedback: instead of return we define missingNumber and break the loop
+                missingNumber = i;
+                break;
+              }
           missing = true;
         }
-        return -1 ;
+        // #feedback: finally, we return missingNumber that found (or not, but than it will be n by it initialization as required).
+        return missingNumber;
     }
     public static int secondMaxValue(int [] array) {
         int max = array[0] ;
@@ -39,6 +51,7 @@ public class ArrayOps {
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
         boolean exist = false ;
+        // #feedback: you validated only one direction, when array1 is subset of array2, but not when array2 is subset of array1
         for (int i = 0; i < array1.length ; i++){
             for (int j = 0; j < array2.length ; j++){
                 if (array1[i]==array2[j]) {
